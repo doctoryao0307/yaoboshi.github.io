@@ -1,0 +1,1 @@
+# yaoboshi.github.io
