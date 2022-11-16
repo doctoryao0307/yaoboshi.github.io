@@ -29,14 +29,14 @@
                 // console.log(Number(res.latitude).toFixed(2));
                 // localStorage.setItem("city", JSON.stringify(res))
                 if (this.getStatus() == BMAP_STATUS_SUCCESS) {
-                    console.log(res);
+                    //console.log(res);
                     lat = Number(res.latitude).toFixed(2) //当前纬度
                     lng = Number(res.longitude).toFixed(2) //当前经度
                     province = res.address.province //返回当前省份
                     city = res.address.city //返回当前城市
 
                 }
-                console.log(province, city);
+                //console.log(province, city);
                 /**
             code API状态码，具体含义请参考状态码
             updateTime 当前API的最近更新时间
@@ -69,7 +69,7 @@
                         key: 'ab85294a750f477197418e1ee76e91ec'
                     },
                     success: function (res) {
-                        console.log(res);
+                       // console.log(res);
                         if (res.code==200) {
 
                             var html=`
