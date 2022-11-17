@@ -109,8 +109,8 @@
   <script src='../biaobai_xiangcePPT/js/jquery.1.7.1.min.js'></script>
   <script src="../biaobai_xiangcePPT/js/index.js"></script>
   <audio id="main_audio" autoplay="autoplay" preload="auto" loop>
-    //<source src="http://music.163.com/outchain/player?type=2&id=27483167&auto=1&height=66" type="audio/mpeg" />
-    <source src="./20220519133539938.m4a" type="audio/mpeg" />
+    <source src="//music.163.com/outchain/player?type=2&id=27483167&auto=1&height=66" type="audio/mpeg" />
+    
   </audio>
   <div style="display:none">
     <script>
@@ -134,7 +134,7 @@
         });
       });
 
-      // web端 (动作可以自己换.我就随便举个栗子)
+      // web端 (动作可以自己换.)
       window.addEventListener('mousedown', e => {
         context.resume().then(() => {
           window.removeEventListener('mousedown', e => {});
@@ -144,16 +144,6 @@
           }
         });
       });
-      window.addEventListener('DOMContentLoaded', function () {
-    function audioAutoPlay() {
-        var audio = document.getElementById('main_audio');
-            audio.play();
-        document.addEventListener("WeixinJSBridgeReady", function () {
-            audio.play();
-        }, false);
-    }
-    audioAutoPlay();
-});
     </script>
   </div>
 </body>
