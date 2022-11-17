@@ -108,7 +108,7 @@
   </div>
   <script src='../biaobai_xiangcePPT/js/jquery.1.7.1.min.js'></script>
   <script src="../biaobai_xiangcePPT/js/index.js"></script>
-  <audio id="main_audio" src="http://m801.music.126.net/20221117135202/40754176f3b6805b5bad1f7a15c263d8/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/10029534505/9c1f/34ca/f193/e556db9b306213fc848e84d463e3b155.mp3" autoplay preload loop>
+  <audio muted id="main_audio" src="http://m801.music.126.net/20221117135202/40754176f3b6805b5bad1f7a15c263d8/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/10029534505/9c1f/34ca/f193/e556db9b306213fc848e84d463e3b155.mp3" autoplay preload loop>
    
   </audio>
   <div style="display:none">
@@ -120,37 +120,10 @@
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
       })();
-     function autoPlayMusic() {
-    // 自动播放音乐效果，解决浏览器或者APP自动播放问题
-    function musicInBrowserHandler() {
-        musicPlay(true);
-        document.body.removeEventListener('touchstart', musicInBrowserHandler);
-    }
-    document.body.addEventListener('touchstart', musicInBrowserHandler);
-
-    // 自动播放音乐效果，解决微信自动播放问题
-    function musicInWeixinHandler() {
-        musicPlay(true);
-        document.addEventListener("WeixinJSBridgeReady", function () {
-            musicPlay(true);
-        }, false);
-    
-
-      }, false);
-        document.removeEventListener('DOMContentLoaded', musicInWeixinHandler);
-    }
-    document.addEventListener('DOMContentLoaded', musicInWeixinHandler);
+      window.onload = () => {
+	document.getElementById('main_audio').muted = false;
 }
-    
-function musicPlay(isPlay) {
-    var media = document.querySelector('#main_audio');
-    if (isPlay && media.paused) {
-        media.play();
-    }
-    if (!isPlay && !media.paused) {
-        media.pause();
-    }
-}
+
       
 
     </script>
