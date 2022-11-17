@@ -121,29 +121,33 @@
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
       })();
-      var context = new AudioContext();
-
-document.addEventListener('DOMContentLoaded', function () {
-    function audioAutoPlay() {
-        var audio = document.getElementById('main_audio');
-            audio.play();
-        document.addEventListener("WeixinJSBridgeReady", function () {
-            audio.play();
-        }, false);
+     function autoPlayMusic() {
+    // 自动播放音乐效果，解决浏览器或者APP自动播放问题
+    function musicInBrowserHandler() {
+        musicPlay(true);
+        document.body.removeEventListener('touchstart', musicInBrowserHandler);
     }
-    audioAutoPlay();
-});
+    document.body.addEventListener('touchstart', musicInBrowserHandler);
 
-      // web端 (动作可以自己换.)
-      window.addEventListener('mousedown', e => {
-        context.resume().then(() => {
-          window.removeEventListener('mousedown', e => {});
-          if ($("#main_audio")[0].currentTime == 0) {
-            // 播放音乐
-            document.getElementById('main_audio').play();
-          }
-        });
-      });
+    // 自动播放音乐效果，解决微信自动播放问题
+    function musicInWeixinHandler() {
+        musicPlay(true);
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            musicPlay(true);
+        }, false);
+        document.removeEventListener('DOMContentLoaded', musicInWeixinHandler);
+    }
+    document.addEventListener('DOMContentLoaded', musicInWeixinHandler);
+}
+function musicPlay(isPlay) {
+    var media = document.querySelector('#main_audio');
+    if (isPlay && media.paused) {
+        media.play();
+    }
+    if (!isPlay && !media.paused) {
+        media.pause();
+    }
+}
     </script>
   </div>
 </body>
